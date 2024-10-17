@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #010b1f;
+}
+
+input {
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid darkgrey;
+  margin: 10px 0;
+  padding: 0 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+textarea {
+  border-radius: 10px;
+  padding: 0 10px;
+  border: 1px solid darkgrey;
+  margin: 10px 0;
+}
+
+button {
+  height: 50px;
+  background-color: #197ee1;
+  color: white;
+  border: 0;
+  border-radius: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+#container {
+  width: 400px;
+  height: 100%;
+  background-color: #fff;
+  margin: 30px auto;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+#myForm {
+  margin: 30px;
+}
+
+#myTitle {
+  text-align: center;
+  padding-top: 30px ;
+}
+
+.width100 {
+  width: 100%;
+}
+
+.width45 {
+  width: 45%;
+}
+
+.twoEle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.myLable {
+  line-height: 50px;
+  color: darkgrey;
+}
+
+.allowed {
+  height: 1em;
+  margin: 0;
+  padding: 0;
+}
