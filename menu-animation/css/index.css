@@ -1,0 +1,41 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  font-weight: normal;
+}
+ul {
+  list-style: none;
+}
+.desc {
+  color: #666;
+  font-size: 14px;
+  text-align: center;
+  margin: 1em 0;
+}
+.menu-container {
+  width: 200px;
+  margin: 50px auto;
+  background: #434a50;
+  color: #fff;
+  line-height: 1.5;
+}
+.menu h2 {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.sub-menu {
+  background: #565c63;
+}
+.sub-menu li {
+  font-size: 14px;
+  padding: 8px 0 8px 30px;
+}
+.menu-container {
+  border-radius: 5px;
+}
+.sub-menu {
+  height: 0;
+  overflow: hidden;
+  transition: 0.3s;
+}
