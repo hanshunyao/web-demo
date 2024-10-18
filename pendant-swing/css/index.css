@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+}
+.bear {
+  width: 59px;
+  height: 107px;
+  background: url(../img/bear.png);
+  margin: -5px auto 0; 
+  /* 调整一下小熊线的位置 哈哈 */
+
+}
+.bear {
+  animation: swing 1s infinite ease-in-out alternate;
+  transform-origin: center top;
+}
+@keyframes swing {
+  0% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(-45deg);
+  }
+}
