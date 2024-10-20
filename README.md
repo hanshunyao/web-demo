@@ -1,6 +1,6 @@
 # web_demo
 
-自己开发的一些好玩的示例！
+自己开发的一些好玩的小玩意！
 web_demo
 ├── accordion-demo 折叠面板（手风琴菜单）
 ├── form-demo 表单 demo
@@ -9,4 +9,5 @@ web_demo
 ├── menu-animation 菜单动画 demo
 ├── pendant-swing 挂件摆动动画
 ├── scrolling-ads-demo 滚动广告 demo
+├── drop-down-menu-demo 下拉菜单 demo
 └── README.md
