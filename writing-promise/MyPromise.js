@@ -17,7 +17,7 @@ function runMicroTask(callback) {
   }
 }
 function isPromise(obj) {
-  return !!(obj && typeof obj === 'object' && typeof obj.then === 'function')
+  return !!(obj && typeof obj === "object" && typeof obj.then === "function");
 }
 
 class MyPromise {
@@ -44,14 +44,14 @@ class MyPromise {
         return;
       }
       try {
-        const result = executor(this._value)
+        const result = executor(this._value);
         if (isPromise(result)) {
-          result.then(resolve, reject)
+          result.then(resolve, reject);
         } else {
-          resolve(result)
+          resolve(result);
         }
       } catch (err) {
-        reject(err)
+        reject(err);
       }
     });
   }
@@ -74,17 +74,20 @@ class MyPromise {
   }
 
   catch(onRejected) {
-    return this.then(null, onRejected)
+    return this.then(null, onRejected);
   }
 
   fianlly(onsettled) {
-    return this.then((data) => {
-      onsettled();
-      return data;
-    }, (reason) => {
-      onsettled();
-      throw reason;
-    })
+    return this.then(
+      (data) => {
+        onsettled();
+        return data;
+      },
+      (reason) => {
+        onsettled();
+        throw reason;
+      }
+    );
   }
 
   static resolve(data) {
@@ -93,23 +96,23 @@ class MyPromise {
     }
     return new MyPromise((resolve, reject) => {
       if (isPromise(data)) {
-        data.then(resolve, reject)
+        data.then(resolve, reject);
       } else {
-        resolve(data)
+        resolve(data);
       }
-    })
+    });
   }
 
   static reject(reason) {
     return new MyPromise((resolve, reject) => {
-      reject(reason)
-    })
+      reject(reason);
+    });
   }
 
   static all(proms) {
     return new MyPromise((resolve, reject) => {
       try {
-        const results = []
+        const results = [];
         let count = 0;
         let fulfilledCount = 0;
         for (const prom of proms) {
@@ -119,17 +122,30 @@ class MyPromise {
             fulfilledCount++;
             results[i] = data;
             if (fulfilledCount === count) {
-              resolve(results)
+              resolve(results);
             }
-          }, reject)
+          }, reject);
         }
         if (count === 0) {
-          resolve(results)
+          resolve(results);
         }
       } catch (err) {
-        reject(err)
+        reject(err);
       }
-    })
+    });
+  }
+  static allSettled(proms) {
+    const ps = [];
+
+    for (const prom in proms) {
+      ps.push(
+        MyPromise.resolve(prom).then(
+          (data) => ({ state: FULFILLED, value: data }),
+          (reason) => ({ state: REJECTED, reason: reason })
+        )
+      );
+    }
+    MyPromise.all(ps)
   }
   
   _changeState(state, value) {
