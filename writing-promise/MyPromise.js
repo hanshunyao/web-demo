@@ -34,7 +34,7 @@ class MyPromise {
 
   _runOneHandlers({ executor, state, resolve, reject }) {
     runMicroTask(() => {
-      if (state === this._changeState) return;
+      if (state !== this._state) return;
       if (typeof executor !== "function") {
         if (state === FULFILLED) {
           resolve(this._value);
