@@ -134,9 +134,9 @@ class MyPromise {
       }
     });
   }
+
   static allSettled(proms) {
     const ps = [];
-
     for (const prom in proms) {
       ps.push(
         MyPromise.resolve(prom).then(
@@ -148,6 +148,14 @@ class MyPromise {
     MyPromise.all(ps)
   }
   
+  static race(proms){
+    return new MyPromise((resolve,reject)=>{
+      for (const prom of proms){
+        MyPromise.resolve(prom).then(resolve,reject)
+      }
+    })
+  }
+
   _changeState(state, value) {
     if (this._state !== PENDING) return;
     this._state = state;
