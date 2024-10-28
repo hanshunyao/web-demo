@@ -72,7 +72,7 @@ class MyPromise {
       this._runHandlers();
     });
   }
-  
+
   catch(onRejected) {
     return this.then(null, onRejected)
   }
@@ -87,6 +87,24 @@ class MyPromise {
     })
   }
 
+  static resolve(data) {
+    if (data instanceof MyPromise) {
+      return data;
+    }
+    return new MyPromise((resolve, reject) => {
+      if (isPromise(data)) {
+        data.then(resolve, reject)
+      } else {
+        resolve(data)
+      }
+    })
+  }
+  
+  static reject(reason) {
+    return new MyPromise((resolve, reject) => {
+      reject(reason)
+    })
+  }
   _changeState(state, value) {
     if (this._state !== PENDING) return;
     this._state = state;
