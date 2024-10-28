@@ -16,7 +16,7 @@ function runMicroTask(callback) {
     setTimeout(callback, 0);
   }
 }
-function isPromise(obj){
+function isPromise(obj) {
   return !!(obj && typeof obj === 'object' && typeof obj.then === 'function')
 }
 
@@ -43,14 +43,14 @@ class MyPromise {
         }
         return;
       }
-      try{
+      try {
         const result = executor(this._value)
-        if(isPromise(result)){
+        if (isPromise(result)) {
           result.then(resolve, reject)
-        }else{
+        } else {
           resolve(result)
         }
-      }catch(err){
+      } catch (err) {
         reject(err)
       }
     });
@@ -62,7 +62,6 @@ class MyPromise {
       this._handlers.shift();
     }
   }
-
   _pushHandler(executor, state, resolve, reject) {
     this._handlers.push({ executor, state, resolve, reject });
   }
@@ -72,6 +71,20 @@ class MyPromise {
       this._pushHandler(onRejected, REJECTED, resolve, reject);
       this._runHandlers();
     });
+  }
+  
+  catch(onRejected) {
+    return this.then(null, onRejected)
+  }
+
+  fianlly(onsettled) {
+    return this.then((data) => {
+      onsettled();
+      return data;
+    }, (reason) => {
+      onsettled();
+      throw reason;
+    })
   }
 
   _changeState(state, value) {
@@ -89,13 +102,3 @@ class MyPromise {
     this._changeState(REJECTED, reason);
   }
 }
-
-const pro = new MyPromise((resolve, reject) => {
-  resolve(123321);
-});
-// pro.then(function A(){})
-pro.then(
-  function A() {},
-  function B() {}
-);
-console.log(pro);
