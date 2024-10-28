@@ -99,12 +99,39 @@ class MyPromise {
       }
     })
   }
-  
+
   static reject(reason) {
     return new MyPromise((resolve, reject) => {
       reject(reason)
     })
   }
+
+  static all(proms) {
+    return new MyPromise((resolve, reject) => {
+      try {
+        const results = []
+        let count = 0;
+        let fulfilledCount = 0;
+        for (const prom of proms) {
+          let i = count;
+          count++;
+          MyPromise.resolve(prom).then((data) => {
+            fulfilledCount++;
+            results[i] = data;
+            if (fulfilledCount === count) {
+              resolve(results)
+            }
+          }, reject)
+        }
+        if (count === 0) {
+          resolve(results)
+        }
+      } catch (err) {
+        reject(err)
+      }
+    })
+  }
+  
   _changeState(state, value) {
     if (this._state !== PENDING) return;
     this._state = state;
