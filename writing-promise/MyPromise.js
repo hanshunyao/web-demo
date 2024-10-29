@@ -3,9 +3,9 @@ const FULFILLED = "fulfilled";
 const REJECTED = "rejected";
 
 function runMicroTask(callback) {
-  if (process && process.nextTick) {
+  if (globalThis.process && globalThis.process.nextTick) {
     process.nextTick(callback);
-  } else if (MutationObserver) {
+  } else if (globalThis.MutationObserver) {
     const tempElement = document.createElement("p");
     const tempObserver = new MutationObserver(callback);
     tempObserver.observe(tempElement, {
@@ -32,7 +32,7 @@ class MyPromise {
     }
   }
 
-  _runOneHandlers({ executor, state, resolve, reject }) {
+  _runOneHandler({ executor, state, resolve, reject }) {
     runMicroTask(() => {
       if (state !== this._state) return;
       if (typeof executor !== "function") {
@@ -58,7 +58,7 @@ class MyPromise {
   _runHandlers() {
     if (this._state === PENDING) return;
     while (this._handlers[0]) {
-      this._runOneHandlers(this._handlers[0]);
+      this._runOneHandler(this._handlers[0]);
       this._handlers.shift();
     }
   }
@@ -145,15 +145,15 @@ class MyPromise {
         )
       );
     }
-    MyPromise.all(ps)
+    return MyPromise.all(ps);
   }
-  
-  static race(proms){
-    return new MyPromise((resolve,reject)=>{
-      for (const prom of proms){
-        MyPromise.resolve(prom).then(resolve,reject)
+
+  static race(proms) {
+    return new MyPromise((resolve, reject) => {
+      for (const prom of proms) {
+        MyPromise.resolve(prom).then(resolve, reject);
       }
-    })
+    });
   }
 
   _changeState(state, value) {
