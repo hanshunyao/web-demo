@@ -26,4 +26,5 @@ const shallowCopy5 = { level: 1, children: data.children.concat() };
 // target：要拷贝的目标对象
 // object1：待拷贝到第一个对象的对象
 // objectN：待拷贝到第N个对象的对象
-const shallowCopy6 = $.extend(cloneObj, obj);
+const shallowCopy6 = {};
+$.extend(shallowCopy6, obj);
