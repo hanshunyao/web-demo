@@ -10,10 +10,10 @@ const data = {
   ],
 };
 // JSON.parse(JSON.stringify) 缺点是 不能拷贝函数
-const deepCopy1 = JSON.parse(JSON.stringify(stu));
+const deepClone1 = JSON.parse(JSON.stringify(stu));
 // jQuery $.extend(deep,target,object1,objectN)
-const deepCopy2 = {};
-$.extend(true, deepCopy2, data);
+const deepClone2 = {};
+$.extend(true, deepClone2, data);
 // 递归
 function deepClone(target) {
   let result;
@@ -56,4 +56,4 @@ function deepClone(target) {
   // 返回结果
   return result;
 }
-const deepCopy3 = deepClone(data);
+const deepClone3 = deepClone(data);
