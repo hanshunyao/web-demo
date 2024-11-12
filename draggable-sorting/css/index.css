@@ -1,0 +1,17 @@
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px;
+  background-color: #f9f9f9;
+  cursor: grab;
+}
+
+li.dragging {
+  opacity: 0.5;
+}
