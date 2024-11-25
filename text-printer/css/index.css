@@ -1,0 +1,22 @@
+.print {
+  font-size: 60px;
+  margin: 100px auto 0;
+  color: blue;
+  width: 8em;
+  animation: typingWords 5s steps(14) infinite, cursor 0.5s steps(1) infinite;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #222;
+}
+
+@keyframes typingWords {
+  0% {
+    width: 0;
+  }
+}
+
+@keyframes cursor {
+  50% {
+    border-color: deeppink;
+  }
+}

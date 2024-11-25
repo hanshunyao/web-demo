@@ -1,6 +1,6 @@
 # web_demo
 
-自己开发的一些好玩的小玩意！
+自己开发的一些好玩的小玩意 ！这一定很有趣 ！
 
 ```
 web-demo
@@ -12,6 +12,7 @@ web-demo
 ├── files-scanning 扫描文件、文件夹大小类型
 ├── form-demo 表单demo
 ├── geolocation-demo 定位demo
+├── gradual-change-streamer-text 水滴效果
 ├── image-drag-verification 图片拖动验证
 ├── img-carousel 无缝轮播图
 ├── js-drag-demo 可拖拽便笺
@@ -22,7 +23,7 @@ web-demo
 ├── pic-magnifying-glass 图片放大镜
 ├── rotate-avatar 头像旋转动画
 ├── scrolling-ads-demo 文字滚动效果
+├── text-printer 文字打印机效果
 ├── text-rain 文字雨动画
 └── README.md
 ```
-
