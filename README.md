@@ -23,6 +23,7 @@ web-demo
 ├── pic-magnifying-glass 图片放大镜
 ├── rotate-avatar 头像旋转动画
 ├── scrolling-ads-demo 文字滚动效果
+├── slider-demo 滑动输入条demo
 ├── text-printer 文字打印机效果
 ├── text-rain 文字雨动画
 └── README.md
